@@ -1,16 +1,25 @@
 ---
-
+import Card from "../../components/card.astro";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <title>Milan Hundersmarck</title>
+    </head>
+    <body>
+        <main class="grid">
+            <Card columns="1/4" rows="1/4">
+                <h1>Hi, I'm Milan,</h1>
+                <p>I craft fast, accessible websites & web apps.</p>
+            </Card>
+            <Card columns="4/6" rows="1/4">Ik</Card>
+            <Card columns="4/6" rows="4/6">Ben</Card>
+            <Card columns="1/4" rows="4/6">Milan</Card>
+        </main>
+    </body>
 </html>

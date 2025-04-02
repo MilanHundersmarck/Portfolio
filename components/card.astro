@@ -1,0 +1,6 @@
+---
+const { columns, rows } = Astro.props;
+const style = `grid-column: ${columns}; grid-row: ${rows};`;
+---
+
+<div class="card" style={style}><slot /></div>
