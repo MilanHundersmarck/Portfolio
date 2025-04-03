@@ -23,7 +23,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      - run: npm run build --if-present
+      - name: Build Astro site
+        run: npm run build
+        env:
+          PUBLIC_UMAMI_ID: ${{ secrets.PUBLIC_UMAMI_ID }}
+          PUBLIC_UMAMI_URL: ${{ secrets.PUBLIC_UMAMI_URL }}
       - uses: a7ul/tar-action@v1.1.0
         with:
           command: c
