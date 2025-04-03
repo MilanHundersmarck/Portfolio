@@ -8,6 +8,6 @@ export default defineConfig({
   integrations: [],
 
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
 });
