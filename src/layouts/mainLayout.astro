@@ -1,0 +1,18 @@
+---
+import "../styles/global.css";
+const { title } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="description" content="Personal portfolio of Milan, a 21-year-old web developer crafting fast, modern websites with clean code and thoughtful design. Explore projects, skills, and contact info." />
+        <title>{title ? title : "Milan Hundersmarck"}</title>
+    </head>
+    <body class="bg-[#faf9f7] m-0 font-['Roboto',sans-serif]">
+        <slot />
+    </body>
+</html>
