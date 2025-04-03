@@ -1,4 +1,5 @@
 ---
+import Button from "../../components/button.astro";
 import Card from "../../components/card.astro";
 ---
 
@@ -11,15 +12,62 @@ import Card from "../../components/card.astro";
         <link rel="stylesheet" href="/styles/global.css" />
         <title>Milan Hundersmarck</title>
     </head>
-    <body>
-        <main class="grid">
-            <Card columns="1/4" rows="1/4">
-                <h1>Hi, I'm Milan,</h1>
-                <p>I craft fast, accessible websites & web apps.</p>
+    <body class="bg-[#faf9f7] m-0 font-['Roboto',sans-serif]">
+        <main
+            class="grid grid-cols-5 grid-rows-5 gap-7 p-16 h-screen w-full max-w-[100vw] box-border"
+        >
+            <Card columns="1/4" rows="1/4" className="p-16">
+                <div class="flex justify-between flex-col">
+                    <div>
+                        <h1 class="text-7xl m-0 font-bold mb-4 w-1/2">
+                            Hi, I'm Milan,
+                        </h1>
+                        <p class="text-3xl font-light mb-8 w-2/3">
+                            I craft fast, accessible websites &amp; web apps.
+                        </p>
+                    </div>
+                    <div class="flex gap-4">
+                        <Button
+                            href="/about"
+                            class="rounded text-xl py-2.5 px-5 cursor-pointer bg-[#192f44] text-white"
+                        >
+                            My Work
+                        </Button>
+                        <Button
+                            href="/about"
+                            style="secondary"
+                            class="rounded text-xl py-2.5 px-5 cursor-pointer bg-transparent text-[#192f44] border border-[#192f44]"
+                        >
+                            Contact me
+                        </Button>
+                    </div>
+                </div>
+                <div>afbeelding</div>
             </Card>
-            <Card columns="4/6" rows="1/4">Ik</Card>
-            <Card columns="4/6" rows="4/6">Ben</Card>
-            <Card columns="1/4" rows="4/6">Milan</Card>
+
+            <Card
+                columns="4/6"
+                rows="1/4"
+                class="bg-white rounded-lg shadow-md p-12 m-0 h-full w-full box-border flex"
+            >
+                Ik
+            </Card>
+
+            <Card
+                columns="4/6"
+                rows="4/6"
+                class="bg-white rounded-lg shadow-md p-12 m-0 h-full w-full box-border flex"
+            >
+                Ben
+            </Card>
+
+            <Card
+                columns="1/4"
+                rows="4/6"
+                class="bg-white rounded-lg shadow-md p-12 m-0 h-full w-full box-border flex"
+            >
+                Milan
+            </Card>
         </main>
     </body>
 </html>

@@ -1,0 +1,12 @@
+---
+const { href, style } = Astro.props;
+const baseClasses = "rounded-[5px] text-xl py-2.5 px-5 cursor-pointer";
+const classes =
+    style === "secondary"
+        ? `${baseClasses} bg-transparent text-[#192f44] border border-[#192f44]`
+        : `${baseClasses} bg-[#192f44] text-white`;
+---
+
+<a href={href} class={classes}>
+    <slot />
+</a>
