@@ -1,0 +1,16 @@
+---
+const { skill, svg } = Astro.props;
+---
+
+<div class="relative group inline-block">
+    <div
+        class="w-[55px] h-[55px] text-md font-semibold bg-blue-100 rounded text-center flex items-center justify-center"
+    >
+        {svg ? <img src={svg} alt={skill} class="w-6 h-6" /> : skill}
+    </div>
+    <div
+        class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10"
+    >
+        {skill}
+    </div>
+</div>

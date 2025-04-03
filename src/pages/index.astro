@@ -1,6 +1,12 @@
 ---
 import Button from "../../components/button.astro";
 import Card from "../../components/card.astro";
+import Skill from "../../components/skill.astro";
+
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+const highlightedProject = projects.find((project) => project.data.highlighted);
 ---
 
 <html lang="en">
@@ -14,59 +20,107 @@ import Card from "../../components/card.astro";
     </head>
     <body class="bg-[#faf9f7] m-0 font-['Roboto',sans-serif]">
         <main
-            class="grid grid-cols-5 grid-rows-5 gap-7 p-16 h-screen w-full max-w-[100vw] box-border"
+            class="flex flex-col gap-4 lg:grid lg:grid-cols-5 lg:grid-rows-5 lg:gap-7 p-3 lg:p-16 h-full lg:h-screen w-full max-w-[100vw] box-border mb-3"
         >
-            <Card columns="1/4" rows="1/4" className="p-16">
-                <div class="flex justify-between flex-col">
+            <Card columns="1/4" rows="1/4" className="lg:p-16 lg:flex">
+                <div class="flex-1 flex flex-col justify-between">
                     <div>
-                        <h1 class="text-7xl m-0 font-bold mb-4 w-1/2">
+                        <h1 class="text-7xl m-0 font-bold mb-4">
                             Hi, I'm Milan,
                         </h1>
-                        <p class="text-3xl font-light mb-8 w-2/3">
+                        <p class="text-3xl font-light mb-8">
                             I craft fast, accessible websites &amp; web apps.
                         </p>
                     </div>
-                    <div class="flex gap-4">
+                    <div
+                        class="w-[250px] h-[250px] rounded-full overflow-hidden lg:hidden mx-auto"
+                    >
+                        <img
+                            src="images/profile.webp"
+                            alt="Milan Hundersmarck"
+                            class="object-cover h-full w-full"
+                        />
+                    </div>
+                    <div
+                        class="flex gap-1 mt-5 justify-center lg:justify-start lg:gap-4 lg:mt-0"
+                    >
+                        <Button href="/work">My Work</Button>
                         <Button
-                            href="/about"
-                            class="rounded text-xl py-2.5 px-5 cursor-pointer bg-[#192f44] text-white"
-                        >
-                            My Work
-                        </Button>
-                        <Button
-                            href="/about"
+                            href="mailto:milanhundersmarck01@hotmail.nl"
                             style="secondary"
-                            class="rounded text-xl py-2.5 px-5 cursor-pointer bg-transparent text-[#192f44] border border-[#192f44]"
                         >
                             Contact me
                         </Button>
                     </div>
                 </div>
-                <div>afbeelding</div>
+
+                <div class="hidden lg:flex justify-center">
+                    <div
+                        class="w-[300px] h-[300px] rounded-full overflow-hidden"
+                    >
+                        <img
+                            src="images/profile.webp"
+                            alt="Milan Hundersmarck"
+                            class="object-cover h-full w-full"
+                        />
+                    </div>
+                </div>
             </Card>
 
-            <Card
-                columns="4/6"
-                rows="1/4"
-                class="bg-white rounded-lg shadow-md p-12 m-0 h-full w-full box-border flex"
-            >
-                Ik
+            <Card columns="4/6" rows="1/4">
+                <div class="flex flex-col h-full">
+                    <h2 class="text-2xl font-bold mb-4">Highlighted Project</h2>
+                    {
+                        highlightedProject.data.images &&
+                            highlightedProject.data.images.length > 0 && (
+                                <div class="overflow-hidden rounded-lg">
+                                    <img
+                                        src={
+                                            highlightedProject.data.images[0]
+                                                .url
+                                        }
+                                        alt={
+                                            highlightedProject.data.images[0]
+                                                .alt
+                                        }
+                                        class="w-full object-cover"
+                                    />
+                                </div>
+                            )
+                    }
+                    <div
+                        class="flex flex-row items-center mt-5 justify-between"
+                    >
+                        <h3 class="text-2xl font-semibold">
+                            {highlightedProject.data.title}
+                        </h3>
+                        <Button>Visit</Button>
+                    </div>
+                </div>
             </Card>
 
-            <Card
-                columns="4/6"
-                rows="4/6"
-                class="bg-white rounded-lg shadow-md p-12 m-0 h-full w-full box-border flex"
-            >
-                Ben
+            <Card columns="4/6" rows="4/6">
+                <h2 class="text-3xl font-bold mb-4">Skills</h2>
+                <div class="flex flex-row flex-wrap gap-3">
+                    <Skill skill="CSS" />
+                    <Skill skill="JS" />
+                    <Skill skill="React" svg="icons/react.svg" />
+                </div>
             </Card>
 
-            <Card
-                columns="1/4"
-                rows="4/6"
-                class="bg-white rounded-lg shadow-md p-12 m-0 h-full w-full box-border flex"
-            >
-                Milan
+            <Card columns="1/4" rows="4/6">
+                <h2 class="text-3xl font-bold mb-4">About me</h2>
+                <p class="text-lg mb-5">
+                    Do reprehenderit nisi incididunt magna fugiat ad laborum eu
+                    do cupidatat enim non excepteur. Excepteur elit
+                    reprehenderit Lorem consectetur nisi et reprehenderit Lorem
+                    proident amet nulla fugiat quis. Aliqua magna cillum
+                    pariatur ipsum Lorem adipisicing et veniam.
+                </p>
+                <Button
+                    href="https://www.linkedin.com/in/milan-hundersmarck-57a53a200/"
+                    target="_blank">Linkedin</Button
+                >
             </Card>
         </main>
     </body>
